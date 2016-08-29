@@ -1,3 +1,5 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Companies</h1>
@@ -18,3 +20,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= column_chart @companies_chart %>

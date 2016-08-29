@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
   def index
     @company = Company.new
     @companies = Company.all
+    @companies_chart = @companies.joins(:claims).group(:name).order("count(claims) DESC").limit(10).pluck("companies.name, count(claims)")
   end
 
   # GET /companies/1
