@@ -5,5 +5,20 @@
   <%= @company.name %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Reclamo</th>
+    </tr>
+  </thead>
+
+  <tbody id="claims">
+    <% @claims.each do |claim| %>
+      <%= render claim %>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Back', companies_path %>
