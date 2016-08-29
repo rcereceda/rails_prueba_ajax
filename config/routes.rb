@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies
-  resources :users do
-    resources :claim
+  resources :users, only: :show do
+    resources :claim, only: [:index, :new, :create, :edit, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

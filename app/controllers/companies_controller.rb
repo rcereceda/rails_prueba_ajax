@@ -11,6 +11,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    redirect_to user_session_path unless user_signed_in?
   end
 
   # GET /companies/new
