@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     redirect_to user_session_path unless user_signed_in?
-    @claims = @company.claims
+    @claims = @company.claims.order(created_at: :desc)
     @claim = Claim.new
   end
 
