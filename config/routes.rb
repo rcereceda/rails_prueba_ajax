@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  get 'dashboards/index'
 
+  devise_for :users
+  
   resources :companies
   resources :users, only: :show do
     resources :claim, only: [:index, :new, :create, :edit, :update]
