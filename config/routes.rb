@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   get 'dashboards/index'
 
   devise_for :users
-  
-  resources :companies
-  resources :users, only: :show do
-    resources :claim, only: [:index, :new, :create, :edit, :update]
+
+  resources :companies do
+    resources :claims
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

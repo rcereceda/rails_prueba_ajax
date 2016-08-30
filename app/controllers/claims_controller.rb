@@ -24,12 +24,16 @@ class ClaimsController < ApplicationController
   # POST /claims
   # POST /claims.json
   def create
+    @company = Company.find(params[:company_id])
     @claim = Claim.new(claim_params)
+    @claim.company = @company
+    @claim.user = current_user
 
     respond_to do |format|
       if @claim.save
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @claim.errors, status: :unprocessable_entity }
@@ -69,6 +73,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:comment, :user_id)
+      params.require(:claim).permit(:comment)
     end
 end
